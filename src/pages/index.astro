@@ -1,6 +1,8 @@
 ---
-import "@/styles/globals.css";
-import {FrontPageSplash} from '@/components/react-ui/FrontPageSplash'
+import '@/styles/globals.css'
+import Layout from '@/layouts/Layout.astro'
 ---
 
-<FrontPageSplash client:load />
+<Layout title="Home">
+	<div class="flex h-screen flex-col items-center justify-center"></div>
+</Layout>
