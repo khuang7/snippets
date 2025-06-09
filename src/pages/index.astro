@@ -1,8 +1,27 @@
 ---
 import '@/styles/globals.css'
 import Layout from '@/layouts/Layout.astro'
+import SnippetView from '@/components/react-ui/SnippetView'
+import { fetchGists } from '@/api/gists/gist-fetch'
+import type { Gist } from '@/api/gists/gist-types'
+
+let gists: Gist[] = []
+let error = null
+try {
+	gists = await fetchGists()
+} catch (e) {
+	error = e instanceof Error ? e.message : String(e)
+}
 ---
 
 <Layout title="Home">
-	<div class="flex h-screen flex-col items-center justify-center">adding this testing github</div>
+	<div class="flex h-screen flex-col items-center justify-center">
+		{
+			error ? (
+				<div class="text-red-500">Error: {error}</div>
+			) : (
+				<SnippetView client:load gists={gists} />
+			)
+		}
+	</div>
 </Layout>
