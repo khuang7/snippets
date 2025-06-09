@@ -20,6 +20,7 @@ const MainContent: React.FC<Props> = ({ gists }) => {
 	const [selectedGist, setSelectedGist] = React.useState<Gist | null>(null)
 
 	const handleOpen = (gist: Gist) => {
+		console.log('Opening gist:', gist.files)
 		setSelectedGist(gist)
 		setOpen(true)
 	}
@@ -60,9 +61,9 @@ const MainContent: React.FC<Props> = ({ gists }) => {
 							Object.entries(selectedGist.files).map(([filename, file]) => (
 								<div key={filename} className="mb-4">
 									<div className="mb-1 font-mono font-bold">{filename}</div>
-									<pre className="overflow-x-auto rounded bg-gray-100 p-2 text-xs">
-										{file.content}
-									</pre>
+									<div className="overflow-x-auto rounded bg-gray-100 p-2 text-xs">
+										Code all goes here, once i figure out a syntax library to work well with this
+									</div>
 								</div>
 							))}
 					</div>

@@ -25,7 +25,6 @@ export type SidebarOptionKey = (typeof sidebarOptions)[number]['key']
 const SnippetView = (props: Props) => {
 	const { gists } = props
 
-	console.log('gists?', gists)
 	const [selected, setSelected] = React.useState<SidebarOptionKey>(sidebarOptions[0].key)
 
 	return (
